@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .navbar-font {
+    @apply text-white font-bold text-sm font-sans cursor-pointer hover:text-gray-400;
+  }
+}
