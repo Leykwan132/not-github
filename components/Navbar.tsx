@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { BellIcon, PlusIcon } from "@heroicons/react/outline";
+import { BellIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import DropDownPlus from "./Navbar/components/DropDownPlus";
 
 const Navbar = () => {
   return (
@@ -42,10 +43,7 @@ const Navbar = () => {
         <div className="cursor-pointer text-white ">
           <BellIcon className="w-6 h-6 hover:text-gray-400" />
         </div>
-        <div className="flex items-center cursor-pointer hover:text-gray-400 text-white">
-          <PlusIcon className="w-6 h-6 " />
-          <ChevronDownIcon className=" w-3 h-3" />
-        </div>
+        <DropDownPlus />
         <div className="flex items-center space-x-1 cursor-pointer text-white hover:text-gray-400">
           <div className="relative rounded-full w-7 h-7 bg-white cursor-pointer hover:bg-gray-400">
             <Image
