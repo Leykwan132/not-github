@@ -6,11 +6,11 @@ const DropDownPlus = () => {
   return (
     <Menu
       as="div"
-      className="flex items-center cursor-pointer hover:text-gray-400 text-white relative"
+      className="relative flex cursor-pointer items-center text-white hover:text-gray-400"
     >
       <Menu.Button className="flex items-center">
-        <PlusIcon className="w-6 h-6 " />
-        <ChevronDownIcon className=" w-3 h-3" />
+        <PlusIcon className="h-6 w-6 " />
+        <ChevronDownIcon className=" h-3 w-3" />
       </Menu.Button>
       {/* Dropdown Menu code */}
       <Transition
@@ -21,7 +21,7 @@ const DropDownPlus = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="bg-gray-900 min-w-[140px] rounded-md py-1 text-gray-400 font-sans font-normal border border-gray-700 text-sm absolute top-5 right-0 flex flex-col items-start ">
+        <Menu.Items className="absolute top-5 right-0 flex min-w-[140px] flex-col items-start rounded-md border border-gray-700 bg-gray-900 py-1 font-sans text-sm font-normal text-gray-300 ">
           <Menu.Item>
             {({ active }) => (
               <div
