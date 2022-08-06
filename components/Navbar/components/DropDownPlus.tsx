@@ -21,7 +21,7 @@ const DropDownPlus = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute top-5 right-0 flex min-w-[140px] flex-col items-start rounded-md border border-gray-700 bg-gray-900 py-1 font-sans text-sm font-normal text-gray-300 ">
+        <Menu.Items className="absolute top-5 right-0 flex min-w-[140px] flex-1 flex-col items-start rounded-md border border-gray-700 bg-gray-900 py-1 font-sans text-sm font-normal text-gray-300 ">
           <Menu.Item>
             {({ active }) => (
               <div

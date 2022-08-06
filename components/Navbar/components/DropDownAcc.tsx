@@ -1,9 +1,10 @@
 import React from "react";
 import { Transition, Menu } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
 const DropDownAcc = () => {
+  const { data: session } = useSession();
   return (
     <Menu
       as="div"
@@ -11,11 +12,7 @@ const DropDownAcc = () => {
     >
       <Menu.Button className="flex items-center">
         <div className="relative h-7 w-7 cursor-pointer rounded-full bg-white hover:bg-gray-400">
-          <Image
-            src="https://github.githubassets.com/images/modules/logos_page/Octocat.png"
-            layout="fill"
-            objectFit="contain"
-          />
+          <Image src={session?.user?.image} layout="fill" objectFit="contain" />
         </div>
         <ChevronDownIcon className=" h-3 w-3" />
       </Menu.Button>
@@ -37,12 +34,12 @@ const DropDownAcc = () => {
                 flex flex-col px-3 py-1`}
                 >
                   <p> Signed in as</p>
-                  <p className="font-bold"> leykwan132</p>
+                  <p className="font-bold"> {session?.user?.email}</p>
                 </div>
               )}
             </Menu.Item>
           </div>
-          <div className="py-1">
+          <div className="w-full py-1">
             <Menu.Item>
               {({ active }) => (
                 <div
@@ -50,7 +47,7 @@ const DropDownAcc = () => {
                 ${active && "bg-blue-500 text-white"}
                 w-full px-3 py-1`}
                 >
-                  <p>Your Profile</p>
+                  <p className="w-full">Your Profile</p>
                 </div>
               )}
             </Menu.Item>
@@ -116,6 +113,9 @@ const DropDownAcc = () => {
                 className={`
                 ${active && "bg-blue-500 text-white"}
                 w-full px-3 py-1`}
+                onClick={() => {
+                  signOut();
+                }}
               >
                 <p>Sign out</p>
               </div>
