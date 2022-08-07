@@ -8,6 +8,8 @@ const CardList = (props: Props) => {
     <div className="grid grid-cols-2 gap-4">
       <Card />
       <Card />
+      <Card />
+      <Card />
     </div>
   );
 };
