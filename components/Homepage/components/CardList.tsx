@@ -10,6 +10,8 @@ const CardList = (props: Props) => {
       <Card />
       <Card />
       <Card />
+
+      <Card addProject />
     </div>
   );
 };
