@@ -6,7 +6,7 @@ type Props = {};
 
 const Card = (props: Props) => {
   return (
-    <div className="flex h-32 cursor-pointer flex-col justify-between rounded-lg border border-gray-700 p-4 ">
+    <div className="flex h-32 cursor-pointer flex-col justify-between rounded-lg border border-gray-700 p-4 duration-300 ease-in hover:scale-105">
       {/* 1st */}
       <div className="flex items-center justify-between">
         {/* title */}
