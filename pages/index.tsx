@@ -1,13 +1,12 @@
 import {
   BookOpenIcon,
-  ChartBarIcon,
   CodeIcon,
   CollectionIcon,
 } from "@heroicons/react/outline";
 import type { NextPage } from "next";
-import { getSession, useSession } from "next-auth/react";
-import Image from "next/image";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
+import CardList from "../components/Homepage/components/CardList";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -25,8 +24,8 @@ const Home: NextPage = () => {
         </div> */}
       </div>
       {/* Right component */}
-      <div className="col-span-2 flex flex-col border-b border-gray-600 pb-2">
-        <div className="flex items-center space-x-3 ">
+      <div className="col-span-2 flex flex-col ">
+        <div className="flex items-center space-x-3  border-b border-gray-600 pb-2">
           <div
             onClick={() => handleUnderline("Overview")}
             className="relative flex cursor-pointer items-center space-x-1 rounded-md py-2 px-2 text-sm font-semibold text-gray-400 hover:bg-gray-800"
@@ -64,6 +63,11 @@ const Home: NextPage = () => {
               }`}
             />{" "}
           </div>
+        </div>
+        <div className="mt-6 flex flex-col text-gray-400">
+          <h1 className="mb-3">Popular repositories</h1>
+          {/* CardList component */}
+          <CardList />
         </div>
       </div>
     </div>
