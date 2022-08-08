@@ -10,10 +10,13 @@ import {
   PuzzleIcon,
   QrcodeIcon,
 } from "@heroicons/react/outline";
-import { SiTailwindcss, SiTypescript, SiJavascript } from "react-icons/si";
+import { SiTailwindcss, SiTypescript } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 
 import CardList from "../components/Homepage/components/CardList";
+import LinkedinFloatSide from "../components/Homepage/components/LinkedinFloatSide";
+import GithubFloatSide from "../components/Homepage/components/GithubFloatSide";
+import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSide";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -21,8 +24,14 @@ const Home: NextPage = () => {
   const handleUnderline = (item: string) => {
     setUnderlined(item);
   };
+
   return (
-    <div className="grid grid-cols-3 gap-4 px-5 pt-10 lg:px-28 ">
+    <div className="relative grid grid-cols-3 gap-4 px-5 pt-10 lg:px-28 ">
+      {/* Linkedin, Github link */}
+      <LinkedinFloatSide />
+      <GithubFloatSide />
+      <PeaceOutFloatSide />
+
       {/* Left component */}
       <div className="flex flex-col">
         <Image
@@ -58,7 +67,7 @@ const Home: NextPage = () => {
           <div className="mt-2 flex space-x-2">
             <div>
               <a href="https://www.typescriptlang.org/" target={"_blank"}>
-                <SiTypescript className="built-with-logo  hover:text-blue-400" />
+                <SiTypescript className="built-with-logo  hover:text-blue-500" />
               </a>
             </div>
             <div>
@@ -68,7 +77,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <a href="https://tailwindcss.com/" target={"_blank"}>
-                <SiTailwindcss className="built-with-logo  hover:text-sky-200" />
+                <SiTailwindcss className="built-with-logo  hover:text-sky-300" />
               </a>
             </div>
           </div>
