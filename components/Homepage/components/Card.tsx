@@ -1,6 +1,7 @@
 import React from "react";
 import { SiTypescript } from "react-icons/si";
 import { AiOutlineStar, AiOutlinePlusCircle } from "react-icons/ai";
+import Image from "next/image";
 
 type Props = {
   addProject?: boolean;
@@ -44,8 +45,16 @@ const Card = ({ addProject }: Props) => {
             </div>
           </div>
           {/* Overlay */}
-          <div className="absolute top-[50%] left-[50%] hidden translate-x-[-50%] translate-y-[-55%] group-hover:block">
-            <h3 className="mb-2 text-center text-xs tracking-wider text-white">
+          <div className=" absolute left-[45%] top-[-30%] hidden  duration-200 ease-in group-hover:inline">
+            <Image
+              src="https://res.cloudinary.com/dx0kyrggg/image/upload/v1659923721/Screenshot_2022-08-08_at_9.54.57_AM_tzp2kt.png"
+              height="200px"
+              width="200px"
+              objectFit="contain"
+            />
+          </div>
+          <div className="absolute top-[50%] left-[5%] hidden translate-y-[-55%] group-hover:block">
+            <h3 className="mb-2 text-left text-xs tracking-wider text-white">
               Spotify Clone
             </h3>
             <div className="flex space-x-2">
