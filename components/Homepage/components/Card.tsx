@@ -1,6 +1,7 @@
 import React from "react";
 import { SiTypescript } from "react-icons/si";
 import { AiOutlineStar, AiOutlinePlusCircle } from "react-icons/ai";
+import Image from "next/image";
 
 type Props = {
   addProject?: boolean;
@@ -10,7 +11,8 @@ const Card = ({ addProject }: Props) => {
   return (
     <div
       className={`group relative flex h-32 flex-col justify-between rounded-lg border border-gray-700 p-4 duration-300 ease-in  ${
-        !addProject && "hover:scale-105 hover:bg-gray-800"
+        !addProject &&
+        "from-slate-800 to-slate-600 hover:scale-105 hover:bg-gradient-to-r"
       } `}
     >
       {!addProject ? (
@@ -18,9 +20,7 @@ const Card = ({ addProject }: Props) => {
           {/* 1st */}
           <div className="flex items-center justify-between group-hover:hidden">
             {/* title */}
-            <p className="cursor-pointer text-sm font-extrabold text-blue-400 hover:underline">
-              title 1
-            </p>
+            <p className="text-sm font-extrabold text-blue-400">title 1</p>
             {/* Public logo */}
             <p className="rounded-lg border border-gray-700 px-2 py-1 text-xs font-semibold">
               Public
@@ -44,8 +44,16 @@ const Card = ({ addProject }: Props) => {
             </div>
           </div>
           {/* Overlay */}
-          <div className="absolute top-[50%] left-[50%] hidden translate-x-[-50%] translate-y-[-55%] group-hover:block">
-            <h3 className="mb-2 text-center text-xs tracking-wider text-white">
+          <div className=" absolute left-[45%] top-[-30%] hidden group-hover:inline">
+            <Image
+              src="https://res.cloudinary.com/dx0kyrggg/image/upload/v1659923721/Screenshot_2022-08-08_at_9.54.57_AM_tzp2kt.png"
+              height="200px"
+              width="200px"
+              objectFit="contain"
+            />
+          </div>
+          <div className="absolute top-[50%] left-[5%] hidden translate-y-[-55%] group-hover:block">
+            <h3 className="mb-2 text-left text-xs tracking-wider text-white">
               Spotify Clone
             </h3>
             <div className="flex space-x-2">

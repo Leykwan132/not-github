@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Navbar from "../components/Navbar";
 import { SessionProvider } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
+import Navbar from "../components/Navbar";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
