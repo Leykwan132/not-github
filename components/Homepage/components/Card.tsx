@@ -45,7 +45,7 @@ const Card = ({ addProject }: Props) => {
             </div>
           </div>
           {/* Overlay */}
-          <div className=" absolute left-[45%] top-[-30%] hidden  duration-200 ease-in group-hover:inline">
+          <div className=" absolute left-[45%] top-[-30%] hidden group-hover:inline">
             <Image
               src="https://res.cloudinary.com/dx0kyrggg/image/upload/v1659923721/Screenshot_2022-08-08_at_9.54.57_AM_tzp2kt.png"
               height="200px"
