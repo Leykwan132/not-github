@@ -4,6 +4,9 @@
 
 @layer components {
   .navbar-font {
-    @apply text-white font-bold text-sm font-sans cursor-pointer hover:text-gray-400;
+    @apply cursor-pointer font-sans text-sm font-bold text-white hover:text-gray-400;
+  }
+  .built-with-logo {
+    @apply h-7 w-7 duration-200 ease-in hover:scale-125;
   }
 }
