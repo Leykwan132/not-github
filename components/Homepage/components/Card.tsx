@@ -12,7 +12,7 @@ const Card = ({ addProject }: Props) => {
     <div
       className={`group relative flex h-32 flex-col justify-between rounded-lg border border-gray-700 p-4 duration-300 ease-in  ${
         !addProject &&
-        "from-slate-800 to-slate-600 hover:scale-105 hover:bg-gradient-to-r "
+        "from-slate-800 to-slate-600 hover:scale-105 hover:bg-gradient-to-r"
       } `}
     >
       {!addProject ? (
@@ -20,7 +20,7 @@ const Card = ({ addProject }: Props) => {
           {/* 1st */}
           <div className="flex items-center justify-between group-hover:hidden">
             {/* title */}
-            <p className=" text-sm font-extrabold text-sky-400">title 1</p>
+            <p className="text-sm font-extrabold text-blue-400">title 1</p>
             {/* Public logo */}
             <p className="rounded-lg border border-gray-700 px-2 py-1 text-xs font-semibold">
               Public
@@ -44,7 +44,7 @@ const Card = ({ addProject }: Props) => {
             </div>
           </div>
           {/* Overlay */}
-          <div className=" absolute left-[45%] top-[-30%] hidden  group-hover:inline">
+          <div className=" absolute left-[45%] top-[-30%] hidden group-hover:inline">
             <Image
               src="https://res.cloudinary.com/dx0kyrggg/image/upload/v1659923721/Screenshot_2022-08-08_at_9.54.57_AM_tzp2kt.png"
               height="200px"
@@ -57,10 +57,10 @@ const Card = ({ addProject }: Props) => {
               Spotify Clone
             </h3>
             <div className="flex space-x-2">
-              <p className="cursor-pointer rounded-md border border-black bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700 hover:bg-orange-500 hover:text-white">
+              <p className="cursor-pointer rounded-md bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700 hover:bg-orange-500 hover:text-white">
                 View Code
               </p>
-              <p className="cursor-pointer rounded-md border border-black bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700  hover:bg-orange-500 hover:text-white">
+              <p className="cursor-pointer rounded-md bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700  hover:bg-orange-500 hover:text-white">
                 View Project
               </p>
             </div>
