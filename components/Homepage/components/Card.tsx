@@ -5,9 +5,10 @@ import Image from "next/image";
 
 type Props = {
   addProject?: boolean;
+  status?: string;
 };
 
-const Card = ({ addProject }: Props) => {
+const Card = ({ addProject, status }: Props) => {
   return (
     <div
       className={`group relative flex h-32 flex-col justify-between rounded-lg border border-gray-700 p-4 duration-300 ease-in  ${
@@ -22,8 +23,16 @@ const Card = ({ addProject }: Props) => {
             {/* title */}
             <p className="text-sm font-extrabold text-blue-400">title 1</p>
             {/* Public logo */}
-            <p className="rounded-lg border border-gray-700 px-2 py-1 text-xs font-semibold">
-              Public
+            <p
+              className={`rounded-lg border ${
+                status === "In-Progress" && "border-yellow-600 text-yellow-200"
+              }
+              ${status === "Done" && "border-green-600 text-green-200"}
+
+              ${status === "On-hold" && "border-red-600 text-red-200"}
+              border-gray-700 px-2 py-1 text-xs font-semibold`}
+            >
+              {status}
             </p>
           </div>
           {/* 2nd */}
