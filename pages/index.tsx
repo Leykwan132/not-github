@@ -17,6 +17,7 @@ import CardList from "../components/Homepage/components/CardList";
 import LinkedinFloatSide from "../components/Homepage/components/LinkedinFloatSide";
 import GithubFloatSide from "../components/Homepage/components/GithubFloatSide";
 import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSide";
+import ContributionCalendar from "../components/Homepage/components/ContributionCalendar";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -129,6 +130,8 @@ const Home: NextPage = () => {
           {/* CardList component */}
           <CardList />
         </div>
+        <p className="mt-6 text-gray-300 ">Total Contribution in 2022</p>
+        <ContributionCalendar />
       </div>
     </div>
   );

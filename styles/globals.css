@@ -10,3 +10,33 @@
     @apply h-7 w-7 duration-200 ease-in hover:scale-125;
   }
 }
+
+.react-calendar-heatmap .color-empty {
+  fill: #161b22;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #0e4429;
+}
+.react-calendar-heatmap .color-scale-2 {
+  fill: #006d32;
+}
+.react-calendar-heatmap .color-scale-3 {
+  fill: #26a641;
+}
+.react-calendar-heatmap .color-scale-4 {
+  fill: #39d353;
+}
+
+.react-calendar-heatmap text {
+  font-size: 10px;
+  fill: #aaa;
+}
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
