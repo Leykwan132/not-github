@@ -30,7 +30,9 @@ const ContributionCalendar = (props: Props) => {
         ]}
         tooltipDataAttrs={(value: any) => {
           if (value.count == null) {
-            return;
+            return {
+              "data-tip": `Dude's chilling`,
+            };
           }
           return {
             "data-tip": ` ${value.count} contributions on ${value.date}`,
