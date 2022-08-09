@@ -44,14 +44,14 @@ const Home: NextPage = () => {
         <p className="mt-4 ml-14 truncate text-left text-2xl font-bold text-gray-300">
           Ley Kwan Choo
         </p>
-        <p className="ml-14 mt-1 text-left font-sans text-gray-400">
+        <p className="ml-14 mt-1 truncate text-left font-sans text-gray-400">
           lchoo2@wisc.edu
         </p>
         <p className="mt-3 ml-14 text-left text-lg text-gray-400">
           Bachelor's in Data Science, Class of 2024
         </p>
-        <div className="ml-14 mt-2 flex space-x-4  text-gray-400">
-          <div className="flex items-center space-x-1">
+        <div className="ml-14 mt-2 flex flex-wrap items-center  text-gray-400">
+          <div className="mr-3 flex items-center space-x-1">
             <PuzzleIcon className="h-5 w-5" />
             <p className="font-extrabold text-blue-300">6</p>
             <p>following</p>
