@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 import ReactTooltip from "react-tooltip";
 
 type Props = {};
 
 const ContributionCalendar = (props: Props) => {
+  const [tooltip, showTooltip] = useState(true);
+
   return (
     <div className="mt-4 mb-20 rounded-lg border border-gray-700 p-6 pb-0 pl-1 ">
       <CalendarHeatmap
+        onMouseOver={() => showTooltip(true)}
+        onMouseLeave={() => {
+          showTooltip(false);
+          setTimeout(() => showTooltip(true), 50);
+        }}
         showWeekdayLabels={true}
         showOutOfRangeDays={true}
         gutterSize={2}
@@ -36,7 +43,7 @@ const ContributionCalendar = (props: Props) => {
           return `color-scale-${value.count}`;
         }}
       />
-      <ReactTooltip effect="float" backgroundColor="#6e7681" />
+      {tooltip && <ReactTooltip backgroundColor="#6e7681" />}
     </div>
   );
 };
