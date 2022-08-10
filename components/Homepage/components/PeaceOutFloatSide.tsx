@@ -43,7 +43,7 @@ const PeaceOutFloatSide = (props: Props) => {
     ));
   };
   return (
-    <div className="absolute top-[51%] left-0 ml-[-100px] flex min-w-[140px] cursor-pointer flex-col rounded-tr-md rounded-br-md bg-gray-900 text-gray-400 duration-200 ease-in hover:ml-[0px] hover:bg-red-600 hover:text-white">
+    <div className="fixed top-[51%] left-0 ml-[-100px] flex min-w-[140px] cursor-pointer flex-col rounded-tr-md rounded-br-md bg-gray-900 text-gray-400 duration-200 ease-in hover:ml-[0px] hover:bg-red-600 hover:text-white">
       <div
         className="flex items-center justify-between py-2 px-2"
         onClick={() => handlePeaceOut()}
