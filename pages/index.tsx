@@ -18,6 +18,7 @@ import LinkedinFloatSide from "../components/Homepage/components/LinkedinFloatSi
 import GithubFloatSide from "../components/Homepage/components/GithubFloatSide";
 import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSide";
 import ContributionCalendar from "../components/Homepage/components/ContributionCalendar";
+import ActivityOverview from "../components/Homepage/components/ActivityOverview";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
@@ -132,6 +133,7 @@ const Home: NextPage = () => {
         </div>
         <p className="mt-6 text-gray-300 ">Total Contribution in 2022</p>
         <ContributionCalendar />
+        <ActivityOverview />
       </div>
     </div>
   );
