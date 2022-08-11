@@ -10,7 +10,7 @@ type Props = {
   underlined: String;
 };
 
-const Navbar = ({ handleUnderline, underlined }: Props) => {
+const HomepageNavigate = ({ handleUnderline, underlined }: Props) => {
   return (
     <div className="flex items-center space-x-3  border-b border-gray-600 pb-2">
       <div
@@ -54,4 +54,4 @@ const Navbar = ({ handleUnderline, underlined }: Props) => {
   );
 };
 
-export default Navbar;
+export default HomepageNavigate;
