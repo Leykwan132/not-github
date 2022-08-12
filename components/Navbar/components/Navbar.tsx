@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { BellIcon } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import DropDownPlus from "./Navbar/components/DropDownPlus";
-import DropDownAcc from "./Navbar/components/DropDownAcc";
+import DropDownPlus from "./DropDownPlus";
+import DropDownAcc from "./DropDownAcc";
 import { signIn, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 const Navbar = () => {

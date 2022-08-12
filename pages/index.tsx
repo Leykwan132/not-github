@@ -3,30 +3,22 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 
-import {
-  BookOpenIcon,
-  CodeIcon,
-  CollectionIcon,
-  PuzzleIcon,
-  QrcodeIcon,
-} from "@heroicons/react/outline";
+import { PuzzleIcon, QrcodeIcon } from "@heroicons/react/outline";
 import { SiTailwindcss, SiTypescript } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 
-import CardList from "../components/Homepage/components/CardList";
 import LinkedinFloatSide from "../components/Homepage/components/LinkedinFloatSide";
 import GithubFloatSide from "../components/Homepage/components/GithubFloatSide";
 import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSide";
-import ContributionCalendar from "../components/Homepage/components/ContributionCalendar";
-import ActivityOverview from "../components/Homepage/components/ActivityOverview";
-
+import HomepageNavigate from "../components/Homepage/components/HomepageNavigate";
+import RepoPage from "../components/Homepage/components/Repo/RepoPage";
+import Overview from "../components/Homepage/components/Overview/Overview";
 const Home: NextPage = () => {
   const { data: session } = useSession();
   const [underlined, setUnderlined] = useState("Overview");
   const handleUnderline = (item: string) => {
     setUnderlined(item);
   };
-
   return (
     <div className="relative grid grid-cols-3 gap-4 px-5 pt-10 lg:px-28 ">
       {/* Linkedin, Github link */}
@@ -87,53 +79,20 @@ const Home: NextPage = () => {
       </div>
       {/* Right component */}
       <div className="col-span-2 flex flex-col ">
-        <div className="flex items-center space-x-3  border-b border-gray-600 pb-2">
-          <div
-            onClick={() => handleUnderline("Overview")}
-            className="relative flex cursor-pointer items-center space-x-1 rounded-md py-2 px-2 text-sm font-semibold text-gray-400 hover:bg-gray-800"
-          >
-            <BookOpenIcon className="h-5 w-5" />
-            <p>Overview</p>
-            <div
-              className={`absolute right-[0px] top-[43px] h-[2px] w-full rounded-md bg-orange-500 ${
-                underlined == "Overview" ? "block" : "hidden"
-              }`}
-            />
-          </div>
-
-          <div
-            onClick={() => handleUnderline("Repo")}
-            className="relative flex cursor-pointer items-center space-x-1 rounded-md py-2 px-2 text-sm font-semibold text-gray-400 hover:bg-gray-800"
-          >
-            <CodeIcon className="h-5 w-5" />
-            <p>Repositories</p>
-            <div
-              className={`absolute right-[0px] top-[43px] h-[2px] w-full rounded-md bg-orange-500 ${
-                underlined == "Repo" ? "block" : "hidden"
-              }`}
-            />{" "}
-          </div>
-          <div
-            onClick={() => handleUnderline("Projects")}
-            className="relative flex cursor-pointer items-center space-x-1 rounded-md py-2 px-2 text-sm font-semibold text-gray-400 hover:bg-gray-800"
-          >
-            <CollectionIcon className="h-5 w-5" />
-            <p>Projects</p>
-            <div
-              className={`absolute right-[0px] top-[43px] h-[2px] w-full rounded-md bg-orange-500 ${
-                underlined == "Projects" ? "block" : "hidden"
-              }`}
-            />{" "}
-          </div>
-        </div>
-        <div className="mt-6 flex flex-col text-gray-400">
-          <h1 className="mb-3">Popular repositories</h1>
-          {/* CardList component */}
-          <CardList />
-        </div>
-        <p className="mt-6 text-gray-300 ">Total Contribution in 2022</p>
-        <ContributionCalendar />
-        <ActivityOverview />
+        <HomepageNavigate
+          handleUnderline={handleUnderline}
+          underlined={underlined}
+        />
+        {underlined === "Overview" && (
+          <>
+            <Overview />
+          </>
+        )}
+        {underlined === "Repo" && (
+          <>
+            <RepoPage />
+          </>
+        )}
       </div>
     </div>
   );

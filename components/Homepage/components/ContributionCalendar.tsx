@@ -17,7 +17,7 @@ const ContributionCalendar = (props: Props) => {
         }}
         showWeekdayLabels={true}
         showOutOfRangeDays={true}
-        gutterSize={2}
+        gutterSize={3}
         startDate={new Date("2022-01-01")}
         endDate={new Date("2022-12-31")}
         values={[
