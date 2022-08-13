@@ -1,9 +1,11 @@
 import { StarIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-type Props = {};
+type Props = {
+  status?: string;
+};
 
-const RepoRow = (props: Props) => {
+const RepoRow = ({ status }: Props) => {
   const [starIsClick, setStarIsClick] = useState(false);
 
   const handleStarClick = () => {
@@ -12,16 +14,25 @@ const RepoRow = (props: Props) => {
   return (
     <div className="flex flex-col border-t-2 border-b-2 border-gray-800 py-6">
       {/* First row */}
-      <div className="flex justify-between">
+      <div className=" flex justify-between">
         <div className="relative flex">
           <a>
             <p className="cursor-pointer text-lg font-bold text-blue-400 hover:underline">
               not-github
             </p>
           </a>
-          <span className=" absolute top-[5%] right-[-100%] rounded-md border  border-yellow-600 px-2 py-1 text-xs text-yellow-200 ">
-            In Progress
-          </span>
+          <p
+            className={`ml-2 grid place-items-center whitespace-nowrap rounded-md border  ${
+              status === "In-Progress" && "border-yellow-600 text-yellow-200"
+            }
+              ${status === "Done" && "border-green-600 text-green-200"}
+
+              ${
+                status === "On-hold" && "border-red-600 text-red-200"
+              } my-1 px-1 text-[10px] `}
+          >
+            {status}
+          </p>
         </div>
         {starIsClick ? (
           <div
