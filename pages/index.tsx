@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
+import { useQuery } from "@apollo/client";
 
 import { PuzzleIcon, QrcodeIcon } from "@heroicons/react/outline";
 import { SiTailwindcss, SiTypescript } from "react-icons/si";
@@ -13,12 +14,16 @@ import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSi
 import HomepageNavigate from "../components/Homepage/components/HomepageNavigate";
 import RepoPage from "../components/Homepage/components/Repo/RepoPage";
 import Overview from "../components/Homepage/components/Overview/Overview";
+import { GET_ALL_USERS } from "../graphql/queries";
+
 const Home: NextPage = () => {
   const { data: session } = useSession();
   const [underlined, setUnderlined] = useState("Overview");
   const handleUnderline = (item: string) => {
     setUnderlined(item);
   };
+  const { data, error } = useQuery(GET_ALL_USERS);
+  console.log(data);
   return (
     <div className="relative grid grid-cols-3 gap-4 px-5 pt-10 lg:px-28 ">
       {/* Linkedin, Github link */}
