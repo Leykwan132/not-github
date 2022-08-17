@@ -6,7 +6,7 @@ const DropDownPlus = () => {
   return (
     <Menu
       as="div"
-      className="relative flex cursor-pointer items-center text-white hover:text-gray-400"
+      className="relative z-50 flex cursor-pointer items-center text-white hover:text-gray-400"
     >
       <Menu.Button className="flex items-center">
         <PlusIcon className="h-6 w-6 " />
