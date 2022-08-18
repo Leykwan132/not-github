@@ -38,18 +38,6 @@ const HomepageNavigate = ({ handleUnderline, underlined }: Props) => {
           }`}
         />{" "}
       </div>
-      <div
-        onClick={() => handleUnderline("Projects")}
-        className="relative flex cursor-pointer items-center space-x-1 rounded-md py-2 px-2 text-sm font-semibold text-gray-400 hover:bg-gray-800"
-      >
-        <CollectionIcon className="h-5 w-5" />
-        <p>Projects</p>
-        <div
-          className={`absolute right-[0px] top-[43px] h-[2px] w-full rounded-md bg-orange-500 ${
-            underlined == "Projects" ? "block" : "hidden"
-          }`}
-        />{" "}
-      </div>
     </div>
   );
 };

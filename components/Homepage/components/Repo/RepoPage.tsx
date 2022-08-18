@@ -1,5 +1,6 @@
 import { ArrowDownIcon, BookmarkAltIcon } from "@heroicons/react/outline";
 import React from "react";
+import RepoList from "./components/RepoList";
 
 type Props = {};
 
@@ -37,6 +38,7 @@ const RepoPage = (props: Props) => {
         </div>
       </div>
       {/* RepoList */}
+      <RepoList />
     </div>
   );
 };

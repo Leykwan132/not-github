@@ -8,7 +8,7 @@ const DropDownAcc = () => {
   return (
     <Menu
       as="div"
-      className="relative flex cursor-pointer items-center text-white hover:text-gray-400"
+      className="relative z-50 flex cursor-pointer items-center text-white hover:text-gray-400"
     >
       <Menu.Button className="flex items-center">
         <div className="relative h-7 w-7 cursor-pointer rounded-full bg-white hover:bg-gray-400">
