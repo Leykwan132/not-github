@@ -1,16 +1,24 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+
+import { userDataState } from "./../../../atoms/userAtoms";
 import Card from "./Card";
 
 type Props = {};
 
 const CardList = (props: Props) => {
+  const userData = useRecoilValue(userDataState);
+  const pinned_array = [0, 1, 2, 3, 4, 5];
   return (
     <div className="grid grid-cols-2 gap-4">
-      <Card status="In-Progress" />
-      <Card status="Done" />
-      <Card status="Done" />
-      <Card status="On-hold" />
-
+      {pinned_array.map((item, i) => (
+        <Card
+          key={i}
+          status="In-Progress"
+          title={userData?.repositories.edges[i].node?.name}
+          description={userData?.repositories.nodes[i]?.description}
+        />
+      ))}
       <Card addProject />
     </div>
   );

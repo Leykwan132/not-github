@@ -6,9 +6,16 @@ import Image from "next/image";
 type Props = {
   addProject?: boolean;
   status?: string;
+  title?: string;
+  description?: string;
+  star?: number;
+  createdAt?: string;
+  lastPush?: string;
+  pageScreenshot?: string;
+  url?: string;
 };
 
-const Card = ({ addProject, status }: Props) => {
+const Card = ({ addProject, status, title, description }: Props) => {
   return (
     <div
       className={`group relative flex h-32 flex-col justify-between rounded-lg border border-gray-700 p-4 duration-300 ease-in  ${
@@ -21,7 +28,7 @@ const Card = ({ addProject, status }: Props) => {
           {/* 1st */}
           <div className="flex items-center justify-between group-hover:hidden">
             {/* title */}
-            <p className="text-sm font-extrabold text-blue-400">title 1</p>
+            <p className="text-sm font-extrabold text-blue-400">{title}</p>
             {/* Public logo */}
             <p
               className={`rounded-lg border ${
@@ -38,7 +45,7 @@ const Card = ({ addProject, status }: Props) => {
           {/* 2nd */}
           <div className="min-h-[40px] text-xs group-hover:hidden">
             {/* Description */}
-            <p className="h-4">description</p>
+            <p className="h-4">{description}</p>
           </div>
           {/* 3rd */}
           <div className="flex space-x-4 group-hover:hidden">
@@ -62,7 +69,7 @@ const Card = ({ addProject, status }: Props) => {
           </div>
           <div className="absolute top-[50%] left-[5%] hidden translate-y-[-55%] group-hover:block">
             <h3 className="mb-2 text-left text-xs tracking-wider text-white">
-              Spotify Clone
+              {title}
             </h3>
             <div className="flex space-x-2">
               <p className="cursor-pointer rounded-md bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700 hover:bg-orange-500 hover:text-white">

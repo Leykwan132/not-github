@@ -2,7 +2,8 @@ import Image from "next/image";
 import { useState } from "react";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
-import { useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
+import { useSetRecoilState } from "recoil";
 
 import { PuzzleIcon, QrcodeIcon } from "@heroicons/react/outline";
 import { SiTailwindcss, SiTypescript } from "react-icons/si";
@@ -14,16 +15,19 @@ import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSi
 import HomepageNavigate from "../components/Homepage/components/HomepageNavigate";
 import RepoPage from "../components/Homepage/components/Repo/RepoPage";
 import Overview from "../components/Homepage/components/Overview/Overview";
-import { GET_ALL_USERS } from "../graphql/queries";
-
-const Home: NextPage = () => {
+import { userDataState } from "./../atoms/userAtoms";
+import client from "../apollo-client";
+type Props = {
+  user?: any;
+};
+const Home: NextPage = ({ user: userData }: Props) => {
   const { data: session } = useSession();
   const [underlined, setUnderlined] = useState("Overview");
+  const setUserData = useSetRecoilState(userDataState);
   const handleUnderline = (item: string) => {
     setUnderlined(item);
   };
-  const { data, error } = useQuery(GET_ALL_USERS);
-
+  setUserData(userData);
   return (
     <div
       className={`relative px-5 pt-10 lg:px-28 ${
@@ -111,3 +115,38 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context: any) {
+  const {
+    data: { user },
+  } = await client.query({
+    query: gql`
+      {
+        user(login: "Leykwan132") {
+          login
+          name
+          repositories(
+            first: 20
+            orderBy: { field: UPDATED_AT, direction: DESC }
+          ) {
+            totalCount
+            nodes {
+              description
+            }
+            edges {
+              node {
+                createdAt
+                name
+                pushedAt
+                url
+              }
+            }
+          }
+        }
+      }
+    `,
+  });
+  return {
+    props: { user },
+  };
+}
