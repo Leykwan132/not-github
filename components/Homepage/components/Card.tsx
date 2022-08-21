@@ -1,5 +1,5 @@
 import React from "react";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiJavascript, SiJupyter } from "react-icons/si";
 import { AiOutlineStar, AiOutlinePlusCircle } from "react-icons/ai";
 import Image from "next/image";
 
@@ -9,13 +9,26 @@ type Props = {
   title?: string;
   description?: string;
   star?: number;
-  createdAt?: string;
-  lastPush?: string;
+  updatedAt?: string;
   pageScreenshot?: string;
+  primaryLanguage?: string;
+  primaryLanguageColor?: string;
   url?: string;
 };
-
-const Card = ({ addProject, status, title, description }: Props) => {
+const Languages = {
+  TypeScript: "TypeScript",
+  JavaScript: "JavaScript",
+  Jupyter: "Jupyter Notebook",
+};
+const Card = ({
+  addProject,
+  status,
+  title,
+  description,
+  primaryLanguage,
+  primaryLanguageColor,
+  url,
+}: Props) => {
   return (
     <div
       className={`group relative flex h-32 flex-col justify-between rounded-lg border border-gray-700 p-4 duration-300 ease-in  ${
@@ -51,8 +64,25 @@ const Card = ({ addProject, status, title, description }: Props) => {
           <div className="flex space-x-4 group-hover:hidden">
             {/* Language and star */}
             <div className="flex items-center space-x-1">
-              <SiTypescript className="h-3 w-3" />
-              <p className="text-xs font-light">Typescript</p>
+              {primaryLanguage === Languages.TypeScript && (
+                <SiTypescript
+                  style={{ color: primaryLanguageColor }}
+                  className={`h-3 w-3 `}
+                />
+              )}
+              {primaryLanguage === Languages.JavaScript && (
+                <SiJavascript
+                  style={{ color: primaryLanguageColor }}
+                  className={`h-3 w-3 `}
+                />
+              )}
+              {primaryLanguage === Languages.Jupyter && (
+                <SiJupyter
+                  style={{ color: primaryLanguageColor }}
+                  className={`h-3 w-3 `}
+                />
+              )}
+              <p className="text-xs font-light">{primaryLanguage}</p>
             </div>
             <div className="flex items-center space-x-1 ">
               <AiOutlineStar className="h-4 w-4 text-yellow-200" />
@@ -72,9 +102,11 @@ const Card = ({ addProject, status, title, description }: Props) => {
               {title}
             </h3>
             <div className="flex space-x-2">
-              <p className="cursor-pointer rounded-md bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700 hover:bg-orange-500 hover:text-white">
-                View Code
-              </p>
+              <a href={url} target={"_blank"}>
+                <p className="cursor-pointer rounded-md bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700 hover:bg-orange-500 hover:text-white">
+                  View Code
+                </p>
+              </a>
               <p className="cursor-pointer rounded-md bg-white py-2 px-2 text-center text-xs font-semibold text-gray-700  hover:bg-orange-500 hover:text-white">
                 View Project
               </p>
