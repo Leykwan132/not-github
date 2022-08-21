@@ -130,15 +130,18 @@ export async function getServerSideProps(context: any) {
             orderBy: { field: UPDATED_AT, direction: DESC }
           ) {
             totalCount
-            nodes {
-              description
-            }
             edges {
               node {
                 createdAt
                 name
-                pushedAt
                 url
+                updatedAt
+                description
+                primaryLanguage {
+                  name
+                  color
+                }
+                isFork
               }
             }
           }
