@@ -1,4 +1,6 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
+import { userDataState } from "../../../../../atoms/userAtoms";
 import RepoRow from "./RepoRow";
 
 type Props = {};
@@ -10,16 +12,20 @@ const status = {
 };
 
 const RepoList = (props: Props) => {
+  const userData = useRecoilValue(userDataState);
   return (
     <div className="mt-4">
-      <RepoRow status={status.inProgress} />
-      <RepoRow status={status.done} />
-      <RepoRow status={status.onHold} />
-      <RepoRow status={status.done} />
-      <RepoRow status={status.inProgress} />
-      <RepoRow status={status.onHold} />
-      <RepoRow status={status.inProgress} />
-      <RepoRow status={status.onHold} />
+      {userData.repositories.edges.map((user) => (
+        <RepoRow
+          title={user.node.name}
+          description={user.node.description}
+          url={user.node.url}
+          primaryLanguage={user.node.primaryLanguage?.name}
+          primaryLanguageColor={user.node.primaryLanguage?.color}
+          updatedAt={user.node.updatedAt}
+          isFork={user.node.isFork}
+        />
+      ))}
     </div>
   );
 };

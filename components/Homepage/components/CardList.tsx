@@ -15,8 +15,15 @@ const CardList = (props: Props) => {
         <Card
           key={i}
           status="In-Progress"
-          title={userData?.repositories.edges[i].node?.name}
-          description={userData?.repositories.nodes[i]?.description}
+          title={userData.repositories.edges[i].node.name}
+          description={userData.repositories.edges[i].node.description}
+          url={userData.repositories.edges[i].node.url}
+          primaryLanguage={
+            userData.repositories.edges[i].node.primaryLanguage.name
+          }
+          primaryLanguageColor={
+            userData.repositories.edges[i].node.primaryLanguage.color
+          }
         />
       ))}
       <Card addProject />
