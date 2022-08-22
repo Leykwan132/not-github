@@ -3,3 +3,8 @@ export const userDataState = atom({
   key: "userDataState", // unique ID (with respect to other atoms/selectors)
   default: null, // default value (aka initial value)
 });
+
+export const filteredUserState = atom({
+  key: "filteredUserState",
+  default: [],
+});
