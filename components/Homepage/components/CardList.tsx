@@ -24,6 +24,7 @@ const CardList = (props: Props) => {
           primaryLanguageColor={
             userData.repositories.edges[i].node.primaryLanguage.color
           }
+          stargazerCount={userData.repositories.edges[i].node.stargazerCount}
         />
       ))}
       <Card addProject />

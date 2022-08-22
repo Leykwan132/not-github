@@ -1,6 +1,7 @@
 import { StarIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import ReactTimeAgo from "react-time-ago";
 type Props = {
   status?: string;
   title?: string;
@@ -11,6 +12,7 @@ type Props = {
   primaryLanguageColor?: string;
   url?: string;
   isFork?: boolean;
+  stargazerCount?: number;
 };
 
 const RepoRow = ({
@@ -23,13 +25,8 @@ const RepoRow = ({
   primaryLanguageColor,
   starred,
   isFork,
+  stargazerCount,
 }: Props) => {
-  console.log(primaryLanguageColor);
-  const [starIsClick, setStarIsClick] = useState(false);
-
-  const handleStarClick = () => {
-    setStarIsClick(!starIsClick);
-  };
   return (
     <div className="flex flex-col border-t-2 border-b-2 border-gray-800 py-6">
       {/* First row */}
@@ -60,24 +57,6 @@ const RepoRow = ({
             </p>
           )}
         </div>
-        {starIsClick ? (
-          <div
-            onClick={() => handleStarClick()}
-            className="flex cursor-pointer items-center justify-center space-x-3 rounded-lg border border-gray-600 bg-gray-800 px-4 py-1"
-          >
-            <AiFillStar className="h-4 w-4 text-yellow-300" />
-            <p className="text-xs font-semibold text-gray-300">Starred</p>
-          </div>
-        ) : (
-          <div
-            onClick={() => handleStarClick()}
-            className="flex cursor-pointer items-center justify-center space-x-3 rounded-lg border border-gray-600 bg-gray-800 px-4 py-1"
-          >
-            <AiOutlineStar className="h-4 w-4 text-gray-300" />
-            {/* <AiFillStar /> */}
-            <p className="text-xs font-semibold text-gray-300">Star</p>
-          </div>
-        )}
       </div>
       {/* Description */}
       <div className="mt-2 text-sm text-gray-400">{description}</div>
@@ -94,13 +73,17 @@ const RepoRow = ({
           </div>
         )}
         {/* star */}
-        <div className="flex items-center space-x-[2px]">
-          <AiOutlineStar className="h-4 w-4 text-gray-400" />
-          <p className="text-xs text-gray-400">2</p>
-        </div>
+        {stargazerCount !== 0 && (
+          <div className="flex items-center space-x-[2px]">
+            <AiOutlineStar className="h-4 w-4 text-gray-400" />
+            <p className="text-xs text-gray-400">{stargazerCount}</p>
+          </div>
+        )}
         {/* Date */}
         <div>
-          <p className="text-xs text-gray-400">Updated 36 minutes ago</p>
+          <p className="text-xs text-gray-400">
+            Updated <ReactTimeAgo date={updatedAt} locale="en-US" />
+          </p>
         </div>
       </div>
     </div>

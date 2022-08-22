@@ -1,6 +1,9 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { userDataState } from "../../../../../atoms/userAtoms";
+import {
+  userDataState,
+  filteredUserState,
+} from "../../../../../atoms/userAtoms";
 import RepoRow from "./RepoRow";
 
 type Props = {};
@@ -13,6 +16,9 @@ const status = {
 
 const RepoList = (props: Props) => {
   const userData = useRecoilValue(userDataState);
+  const filteredUserData = useRecoilValue(filteredUserState);
+
+  console.log(filteredUserData);
   return (
     <div className="mt-4">
       {userData.repositories.edges.map((user) => (
@@ -22,8 +28,9 @@ const RepoList = (props: Props) => {
           url={user.node.url}
           primaryLanguage={user.node.primaryLanguage?.name}
           primaryLanguageColor={user.node.primaryLanguage?.color}
-          updatedAt={user.node.updatedAt}
+          updatedAt={user.node.pushedAt}
           isFork={user.node.isFork}
+          stargazerCount={user.node.stargazerCount}
         />
       ))}
     </div>

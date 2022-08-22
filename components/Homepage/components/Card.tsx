@@ -14,6 +14,7 @@ type Props = {
   primaryLanguage?: string;
   primaryLanguageColor?: string;
   url?: string;
+  stargazerCount?: number;
 };
 const Languages = {
   TypeScript: "TypeScript",
@@ -28,6 +29,7 @@ const Card = ({
   primaryLanguage,
   primaryLanguageColor,
   url,
+  stargazerCount,
 }: Props) => {
   return (
     <div
@@ -41,16 +43,18 @@ const Card = ({
           {/* 1st */}
           <div className="flex items-center justify-between group-hover:hidden">
             {/* title */}
-            <p className="text-sm font-extrabold text-blue-400">{title}</p>
+            <p className="truncate text-xs font-extrabold text-blue-400 md:text-sm">
+              {title}
+            </p>
             {/* Public logo */}
             <p
-              className={`rounded-lg border ${
+              className={`hidden rounded-lg border sm:inline ${
                 status === "In-Progress" && "border-yellow-600 text-yellow-200"
               }
               ${status === "Done" && "border-green-600 text-green-200"}
 
               ${status === "On-hold" && "border-red-600 text-red-200"}
-              border-gray-700 px-2 py-1 text-xs font-semibold`}
+              truncate border-gray-700 px-2 py-1 text-xs font-semibold`}
             >
               {status}
             </p>
@@ -58,7 +62,7 @@ const Card = ({
           {/* 2nd */}
           <div className="min-h-[40px] text-xs group-hover:hidden">
             {/* Description */}
-            <p className="h-4">{description}</p>
+            <p className="max-h-[40px] truncate ">{description}</p>
           </div>
           {/* 3rd */}
           <div className="flex space-x-4 group-hover:hidden">
@@ -84,10 +88,12 @@ const Card = ({
               )}
               <p className="text-xs font-light">{primaryLanguage}</p>
             </div>
-            <div className="flex items-center space-x-1 ">
-              <AiOutlineStar className="h-4 w-4 text-yellow-200" />
-              <p className="text-xs font-light">1</p>
-            </div>
+            {stargazerCount !== 0 && (
+              <div className="flex items-center space-x-1 ">
+                <AiOutlineStar className="h-4 w-4 text-yellow-200" />
+                <p className="text-xs font-light">{stargazerCount}</p>
+              </div>
+            )}
           </div>
           {/* Overlay */}
           <div className=" absolute left-[45%] top-[-30%] hidden  group-hover:inline xl:h-[200px] xl:w-[200px] ">
