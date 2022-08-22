@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { gql } from "@apollo/client";
@@ -15,8 +15,9 @@ import PeaceOutFloatSide from "../components/Homepage/components/PeaceOutFloatSi
 import HomepageNavigate from "../components/Homepage/components/HomepageNavigate";
 import RepoPage from "../components/Homepage/components/Repo/RepoPage";
 import Overview from "../components/Homepage/components/Overview/Overview";
-import { userDataState } from "./../atoms/userAtoms";
+import { userDataState, filteredUserState } from "./../atoms/userAtoms";
 import client from "../apollo-client";
+import { GET_GITHUB_DATA } from "../graphql/queries";
 type Props = {
   user?: any;
 };
@@ -24,10 +25,20 @@ const Home: NextPage = ({ user: userData }: Props) => {
   const { data: session } = useSession();
   const [underlined, setUnderlined] = useState("Overview");
   const setUserData = useSetRecoilState(userDataState);
+  const setFilteredUserData = useSetRecoilState(filteredUserState);
+
   const handleUnderline = (item: string) => {
     setUnderlined(item);
   };
   setUserData(userData);
+
+  useEffect(() => {
+    const defaultTitle = userData.repositories.edges.map(
+      (item) => item.node.name
+    );
+    setFilteredUserData(defaultTitle);
+  }, []);
+
   return (
     <div
       className={`relative px-5 pt-10 lg:px-28 ${
@@ -120,35 +131,9 @@ export async function getServerSideProps(context: any) {
   const {
     data: { user },
   } = await client.query({
-    query: gql`
-      {
-        user(login: "Leykwan132") {
-          login
-          name
-          repositories(
-            first: 20
-            orderBy: { field: UPDATED_AT, direction: DESC }
-          ) {
-            totalCount
-            edges {
-              node {
-                createdAt
-                name
-                url
-                updatedAt
-                description
-                primaryLanguage {
-                  name
-                  color
-                }
-                isFork
-              }
-            }
-          }
-        }
-      }
-    `,
+    query: GET_GITHUB_DATA,
   });
+
   return {
     props: { user },
   };

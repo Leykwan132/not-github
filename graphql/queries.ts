@@ -19,3 +19,30 @@ export const GET_USER_BY_ID = gql`
     }
   }
 `;
+
+export const GET_GITHUB_DATA = gql`
+  {
+    user(login: "Leykwan132") {
+      login
+      name
+      repositories(first: 20, orderBy: { field: CREATED_AT, direction: DESC }) {
+        totalCount
+        edges {
+          node {
+            createdAt
+            name
+            url
+            description
+            primaryLanguage {
+              name
+              color
+            }
+            isFork
+            pushedAt
+            stargazerCount
+          }
+        }
+      }
+    }
+  }
+`;
